@@ -140,7 +140,6 @@ const getIssueforuser = asyncHandler(async (req,res)=>{
 const sendReportToAdmin = asyncHandler(async (req, res) => {
     const userId = req.user._id;
 
-
     // Find all issues created by the user
     const findProblems = await Issue.find({ userId:userId });
 
@@ -174,14 +173,58 @@ const completeReport = asyncHandler(async (req, res) => {
 
     const currentTime = new Date();
 
+    const day = String(currentTime.getDate()).padStart(2, '0');
+    const month = String(currentTime.getMonth() + 1).padStart(2, '0'); 
+    const year = currentTime.getFullYear();
+
+    const hours = String(currentTime.getHours()).padStart(2, '0');
+    const minutes = String(currentTime.getMinutes()).padStart(2, '0');
+    const seconds = String(currentTime.getSeconds()).padStart(2, '0');
+
+    const formattedDateTime = `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+
     // Update the specific issue
-    await Issue.updateOne({ _id: issueId }, { complete: true, updatedAt: currentTime });
+    await Issue.updateOne({ _id: issueId }, { complete: true, updatedAt: formattedDateTime });
 
     // Update corresponding responses
     await Response.updateMany({ issueId }, { complete: true });
 
     return res.status(200).json(new ApiResponse(200, { findProblem, findResponses }, "Issue marked as complete successfully"));
 });
+
+
+const acknowledgeResponse = asyncHandler(async (req, res) => {
+    const userId = req.user._id;
+    const { responseId } = req.body; // Get the specific responseId from the request body or params
+    
+    // Find the specific response by the user
+    const findResponse = await Response.findOne({ issueId: responseId});
+
+    if (!findResponse) {
+        return res.status(404).json(new ApiResponse(404, {}, "No response found with the provided ID for this user"));
+    }
+
+    // Get current date and time for the acknowledgment
+    const currentTime = new Date();
+
+    const day = String(currentTime.getDate()).padStart(2, '0');
+    const month = String(currentTime.getMonth() + 1).padStart(2, '0'); 
+    const year = String(currentTime.getFullYear());
+
+    const hours = String(currentTime.getHours()).padStart(2, '0');
+    const minutes = String(currentTime.getMinutes()).padStart(2, '0');
+    const seconds = String(currentTime.getSeconds()).padStart(2, '0');
+
+    const formattedDateTime = `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`; 
+    
+    await Issue.updateOne({ _id: responseId }, {acknowledge_at: formattedDateTime});
+
+    // Update the response's acknowledgment time
+    await Response.updateOne({ issueId: responseId }, { acknowledge_at: formattedDateTime });
+
+    return res.status(200).json(new ApiResponse(200, { findResponse }, "Response acknowledged successfully"));
+});
+
 
 
 const fetchReport = asyncHandler(async (req,res)=>{
@@ -204,6 +247,7 @@ export {
     getIssueforuser,
     updateResponses,
     completeReport,
+    acknowledgeResponse,
     fetchReport,
     getAdmin,
 }

@@ -30,8 +30,11 @@ const issueSchema = new Schema(
         userId: {
             type: Schema.Types.ObjectId,
             ref: "User"
+        },
+        acknowledge_at : {
+            type: String,
+            default:"",
         }
-
     },
     {
         timestamps: true

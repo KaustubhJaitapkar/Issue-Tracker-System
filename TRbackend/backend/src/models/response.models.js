@@ -24,6 +24,10 @@ const responseSchema = new Schema(
         complete :{
             type : Boolean,
             default:false
+        },
+        acknowledge_at : {
+            type: String,
+            default:"",
         }
 
     },
