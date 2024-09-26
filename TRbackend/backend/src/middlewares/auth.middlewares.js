@@ -19,7 +19,7 @@ export const verifyJWT = asyncHandler(async (req, _, next) => {
             
         }
 
-        const token = authHeader.replace("Bearer ", "");
+        const token = authHeader.replace("Bearer", "");
         if (!token) {
             throw new ApiError(401, "Token is missing");
         }
