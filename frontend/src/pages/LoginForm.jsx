@@ -41,7 +41,8 @@ function LoginForm() {
         console.log("Success ");
         AlertBox(1,"Login Successfull");
         console.log("AlertBox ");
-        console.log("res data" + res.data);
+        localStorage.setItem("accessToken", res.data.accessToken);
+        localStorage.setItem("refreshToken", res.data.refreshToken);
         navigateToAboutPage();
       }else{
         console.log("Error");
