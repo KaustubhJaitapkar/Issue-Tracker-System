@@ -33,7 +33,7 @@ function LoginForm() {
     e.preventDefault();
     
     try{
-      const res = await axios.post('http://localhost:8000/api/v1/users/login',{
+      const res = await axios.post('https://issue-tracker-system-1t4j.onrender.com/api/v1/users/login',{
         username:formData.userid, password:formData.password
       },{withCredentials:true});
 

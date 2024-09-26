@@ -9,7 +9,7 @@ function Reports(issues) {
   const [tasks, settasks] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:8000/api/v1/users/fetch-report',{withCredentials:true})
+    axios.get('https://issue-tracker-system-1t4j.onrender.com/api/v1/users/fetch-report',{withCredentials:true})
       .then((response) => {
         settasks(response.data.data);
       })

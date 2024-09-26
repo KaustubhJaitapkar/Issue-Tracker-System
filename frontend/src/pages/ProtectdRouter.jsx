@@ -8,7 +8,7 @@ function ProtectedRoute({ element, children }) {
 
     const checkAuth = async () => {
         try {
-            await axios.get('http://localhost:8000/api/v1/users/protected-route', {
+            await axios.get('https://issue-tracker-system-1t4j.onrender.com/api/v1/users/protected-route', {
                 withCredentials: true,
             });
             setIsAuthenticated(true);

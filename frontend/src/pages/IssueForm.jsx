@@ -23,7 +23,7 @@ function IssueForm () {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post('http://localhost:8000/api/v1/users/raise-issue', formData,{withCredentials:true})
+    await axios.post('https://issue-tracker-system-1t4j.onrender.com/api/v1/users/raise-issue', formData,{withCredentials:true})
     navigateToAboutPage();
   };
 

@@ -12,7 +12,7 @@ function Header(){
     const navigate = useNavigate();
 
     useEffect(() => {
-      axios.get('http://localhost:8000/api/v1/users/get-admin',{withCredentials:true})
+      axios.get('https://issue-tracker-system-1t4j.onrender.com/api/v1/users/get-admin',{withCredentials:true})
         .then((response) => {
           setAdminId(response.data.data);
         })
@@ -28,7 +28,7 @@ function Header(){
 
     const handleLogOut = async (e) => {
         try {
-          await axios.post('http://localhost:8000/api/v1/users/logout',{}, { withCredentials: true });
+          await axios.post('https://issue-tracker-system-1t4j.onrender.com/api/v1/users/logout',{}, { withCredentials: true });
         } catch (error) {
           console.error('Error completing the task:', error);
         }

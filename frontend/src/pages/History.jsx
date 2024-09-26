@@ -15,7 +15,7 @@ function History(issues) {
   const navigate = useNavigate()
 
   useEffect(() => {
-    axios.get('http://localhost:8000/api/v1/protected-route', { withCredentials: true })
+    axios.get('https://issue-tracker-system-1t4j.onrender.com/api/v1/protected-route', { withCredentials: true })
       .then(response => {
         console.log('User is authenticated:', response.data);
       })
@@ -36,7 +36,7 @@ function History(issues) {
   }, [navigate]);
 
   useEffect(() => {
-    axios.get('http://localhost:8000/api/v1/users/get-issue-for-user', { withCredentials: true })
+    axios.get('https://issue-tracker-system-1t4j.onrender.com/api/v1/users/get-issue-for-user', { withCredentials: true })
       .then((response) => {
         settasks(response.data.data);
         console.log(response.data.data);
@@ -47,7 +47,7 @@ function History(issues) {
   }, []);
 
   useEffect(() => {
-    axios.get('http://localhost:8000/api/v1/users/get-issue', { withCredentials: true })
+    axios.get('https://issue-tracker-system-1t4j.onrender.com/api/v1/users/get-issue', { withCredentials: true })
       .then((response) => {
         setToResolvetasks(response.data.data);
       })
@@ -58,7 +58,7 @@ function History(issues) {
 
   const handleComplete = async (taskId) => {
     try {
-      await axios.post('http://localhost:8000/api/v1/users/complete-report', {
+      await axios.post('https://issue-tracker-system-1t4j.onrender.com/api/v1/users/complete-report', {
         issueId: taskId
       }, { withCredentials: true });
 
@@ -72,7 +72,7 @@ function History(issues) {
   // const [acknowledgedTasks, setAcknowledgedTasks] = useState([]);
   const handleAcknowledge = async (taskId) => {
     try {
-      await axios.post('http://localhost:8000/api/v1/users/acknowledge-time', {
+      await axios.post('https://issue-tracker-system-1t4j.onrender.com/api/v1/users/acknowledge-time', {
         responseId: taskId
       }, { withCredentials: true });
 
