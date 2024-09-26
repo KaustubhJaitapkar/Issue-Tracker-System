@@ -18,6 +18,7 @@ function ProtectedRoute({ element, children }) {
     };
 
     useEffect(() => {
+        console.log("protected route")
         checkAuth();
     }, []);
 
