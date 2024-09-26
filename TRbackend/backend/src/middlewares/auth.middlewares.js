@@ -6,14 +6,17 @@ import { User } from "../models/user.models.js";
 export const verifyJWT = asyncHandler(async (req, _, next) => {
     try {
         const authHeader = req.header("Authorization");
-        console.log(req.data);
+        
         console.log(authHeader);
         if (!authHeader) {
             throw new ApiError(401, "Authorization header is missing");
+            console.log("Authorization header is missing");
         }
 
         if (!authHeader.startsWith("Bearer ")) {
             throw new ApiError(401, "Authorization header format is invalid");
+            console.log("Authorization header format is invalid");
+            
         }
 
         const token = authHeader.replace("Bearer ", "");
