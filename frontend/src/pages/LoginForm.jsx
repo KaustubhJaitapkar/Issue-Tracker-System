@@ -41,7 +41,7 @@ function LoginForm() {
         console.log("Success ");
         AlertBox(1,"Login Successfull");
         console.log("AlertBox ");
-        console.log(res.data);
+        console.log("res data" + res.data);
         navigateToAboutPage();
       }else{
         console.log("Error");
