@@ -6,6 +6,7 @@ import { User } from "../models/user.models.js";
 export const verifyJWT = asyncHandler(async (req, _, next) => {
     try {
         const authHeader = req.header("Authorization");
+        console.log(req.data);
         console.log(authHeader);
         if (!authHeader) {
             throw new ApiError(401, "Authorization header is missing");
