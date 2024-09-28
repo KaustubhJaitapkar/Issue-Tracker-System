@@ -43,7 +43,7 @@ function History(issues) {
 
   useEffect(() => {
     const accessToken = localStorage.getItem('accessToken'); 
-    
+
     axios.get('https://issue-tracker-system-1t4j.onrender.com/api/v1/users/get-issue-for-user', { 
       headers: {
         Authorization: `Bearer ${accessToken}`,  
@@ -59,7 +59,12 @@ function History(issues) {
   }, []);
 
   useEffect(() => {
-    axios.get('https://issue-tracker-system-1t4j.onrender.com/api/v1/users/get-issue', { withCredentials: true })
+    const accessToken = localStorage.getItem('accessToken');
+    
+    axios.get('https://issue-tracker-system-1t4j.onrender.com/api/v1/users/get-issue', { 
+      headers: {
+        Authorization: `Bearer ${accessToken}`,  
+    }, withCredentials: true })
       .then((response) => {
         setToResolvetasks(response.data.data);
       })
