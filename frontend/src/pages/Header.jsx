@@ -12,7 +12,13 @@ function Header(){
     const navigate = useNavigate();
 
     useEffect(() => {
-      axios.get('https://issue-tracker-system-1t4j.onrender.com/api/v1/users/get-admin',{withCredentials:true})
+      const accessToken = localStorage.getItem('accessToken');
+
+      axios.get('https://issue-tracker-system-1t4j.onrender.com/api/v1/users/get-admin',{
+        headers: {
+          Authorization: `Bearer ${accessToken}`,  
+      },
+        withCredentials:true})
         .then((response) => {
           setAdminId(response.data.data);
         })
