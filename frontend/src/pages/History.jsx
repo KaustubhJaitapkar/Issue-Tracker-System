@@ -15,7 +15,13 @@ function History(issues) {
   const navigate = useNavigate()
 
   useEffect(() => {
-    axios.get('https://issue-tracker-system-1t4j.onrender.com/api/v1/protected-route', { withCredentials: true })
+    const accessToken = localStorage.getItem('accessToken'); 
+
+    axios.get('https://issue-tracker-system-1t4j.onrender.com/api/v1/protected-route', {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,  
+    }, 
+      withCredentials: true })
       .then(response => {
         console.log('User is authenticated:', response.data);
       })
@@ -36,7 +42,13 @@ function History(issues) {
   }, [navigate]);
 
   useEffect(() => {
-    axios.get('https://issue-tracker-system-1t4j.onrender.com/api/v1/users/get-issue-for-user', { withCredentials: true })
+    const accessToken = localStorage.getItem('accessToken'); 
+    
+    axios.get('https://issue-tracker-system-1t4j.onrender.com/api/v1/users/get-issue-for-user', { 
+      headers: {
+        Authorization: `Bearer ${accessToken}`,  
+    }, 
+      withCredentials: true })
       .then((response) => {
         settasks(response.data.data);
         console.log(response.data.data);
