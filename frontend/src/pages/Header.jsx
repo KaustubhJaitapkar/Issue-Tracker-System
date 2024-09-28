@@ -44,15 +44,7 @@ function Header(){
         } catch (error) {
           console.error('Error completing the task:', error);
         }
-        sessionStorage.clear();
-        localStorage.clear();
-
-        history.back();  
-        history.forward();
-        window.onpopstate = function ()
-        {
-          history.go(1);
-        };
+       
           
         navigate("/login");
       };
