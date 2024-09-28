@@ -1,28 +1,23 @@
-import { ApiError } from "../utils/ApiError.js";
-import { asyncHandler } from "../utils/asyncHandler.js";
-import jwt from "jsonwebtoken";
-import { User } from "../models/user.models.js";
+import jwt from 'jsonwebtoken';
+import asyncHandler from 'express-async-handler';
+import ApiError from '../utils/ApiError'; // Assuming ApiError is your custom error class
+import User from '../models/User'; // Assuming this is your User model
 
-export const verifyJWT = asyncHandler(async (req, _, next) => {
+export const verifyJWT = asyncHandler(async (req, res, next) => {
     try {
         const authHeader = req.header("Authorization");
-        
-        console.log(authHeader);
+
         if (!authHeader) {
-            throw new ApiError(401, "Authorization header is missing");
             console.log("Authorization header is missing");
+            throw new ApiError(401, "Authorization header is missing");
         }
 
         if (!authHeader.startsWith("Bearer ")) {
-            throw new ApiError(401, "Authorization header format is invalid");
             console.log("Authorization header format is invalid");
-            
+            throw new ApiError(401, "Authorization header format is invalid");
         }
 
         const token = authHeader.replace("Bearer ", "");
-        if (!token) {
-            throw new ApiError(401, "Token is missing");
-        }
 
         console.log("Extracted token: " + token);
 
@@ -31,6 +26,7 @@ export const verifyJWT = asyncHandler(async (req, _, next) => {
         const user = await User.findById(decodedToken?._id).select("-password -refreshToken");
 
         if (!user) {
+            console.log("Invalid Access Token: User not found");
             throw new ApiError(401, "Invalid Access Token");
         }
 
@@ -38,6 +34,6 @@ export const verifyJWT = asyncHandler(async (req, _, next) => {
         next();
     } catch (error) {
         console.error("JWT verification failed:", error.message);
-        throw new ApiError(401, error?.message || "Invalid access token");
+        throw new ApiError(401, error.message || "Invalid access token");
     }
 });
