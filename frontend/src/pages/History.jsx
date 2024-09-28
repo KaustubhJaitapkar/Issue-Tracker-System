@@ -11,6 +11,7 @@ function History(issues) {
 
   const [tasks, settasks] = useState([]);
   const [toResolvetasks, setToResolvetasks] = useState([]);
+  const [hasChanged, setHasChanged] = useState(true);
 
   const navigate = useNavigate()
 
@@ -71,7 +72,7 @@ function History(issues) {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [hasChanged]);
 
   const handleComplete = async (taskId) => {
     const accessToken = localStorage.getItem('accessToken');
@@ -106,7 +107,8 @@ function History(issues) {
         'Content-Type': 'application/json'
     },withCredentials: true });
 
-      window.location.reload();
+      // window.location.reload();
+      setHasChanged(!hasChanged);
 
       AlertBox(1, "Problem acknowledged !!")
       // setAcknowledgedTasks((prev) => [...prev, taskId]);
