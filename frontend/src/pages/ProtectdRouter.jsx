@@ -13,9 +13,11 @@ function ProtectedRoute({ element, children }) {
                 headers: {
                     Authorization: `Bearer ${accessToken}`,  
                 },
+                
                 withCredentials: true,
             });
             setIsAuthenticated(true);
+            console.log(res.data);
         } catch (error) {
             setIsAuthenticated(false);
         }
