@@ -33,8 +33,14 @@ function Header(){
     }
 
     const handleLogOut = async (e) => {
+      const accessToken = localStorage.getItem('accessToken');
+      
         try {
-          await axios.post('https://issue-tracker-system-1t4j.onrender.com/api/v1/users/logout',{}, { withCredentials: true });
+          await axios.post('https://issue-tracker-system-1t4j.onrender.com/api/v1/users/logout',{}, {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,  
+          },
+            withCredentials: true });
         } catch (error) {
           console.error('Error completing the task:', error);
         }
