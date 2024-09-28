@@ -41,6 +41,8 @@ function Header(){
               Authorization: `Bearer ${accessToken}`,  
           },
             withCredentials: true });
+            localStorage.removeItem('accessToken');
+            localStorage.removeItem('refreshToken');
         } catch (error) {
           console.error('Error completing the task:', error);
         }
