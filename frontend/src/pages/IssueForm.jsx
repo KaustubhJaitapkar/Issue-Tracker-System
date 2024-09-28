@@ -23,9 +23,30 @@ function IssueForm () {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post('https://issue-tracker-system-1t4j.onrender.com/api/v1/users/raise-issue', formData,{withCredentials:true})
-    navigateToAboutPage();
-  };
+    
+    const accessToken = localStorage.getItem('accessToken');
+    if (!accessToken) {
+        console.error('Access token not found');
+        return;
+    }
+
+    try {
+        await axios.post('https://issue-tracker-system-1t4j.onrender.com/api/v1/users/raise-issue', 
+            formData,
+            {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,  
+                    'Content-Type': 'application/json'
+                },
+                withCredentials: true 
+            }
+        );
+        navigateToAboutPage();
+    } catch (error) {
+        console.error('Error submitting issue:', error.response?.data || error.message);
+    }
+};
+
 
   return (
     <div className="issue-form-container">
