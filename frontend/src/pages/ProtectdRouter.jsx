@@ -8,22 +8,29 @@ function ProtectedRoute({ element, children }) {
 
     const checkAuth = async () => {
         const accessToken = localStorage.getItem('accessToken');  
+        
+        if (!accessToken) {
+            setIsAuthenticated(false);
+            return;
+        }
+
         try {
-            await axios.get('https://issue-tracker-system-1t4j.onrender.com/api/v1/users/protected-route', {
+            const res = await axios.get('https://issue-tracker-system-1t4j.onrender.com/api/v1/users/protected-route', {
                 headers: {
                     Authorization: `Bearer ${accessToken}`,  
-                },withCredentials: true,
+                },
+                withCredentials: true,
             });
             setIsAuthenticated(true);
             console.log(res.data);
         } catch (error) {
             setIsAuthenticated(false);
-            console.log(error);
+            console.error('Authorization error:', error.response?.data || error.message);
         }
     };
 
     useEffect(() => {
-        console.log("protected route");
+        console.log("Checking protected route");
         checkAuth();
     }, []);
 
