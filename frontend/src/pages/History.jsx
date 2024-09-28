@@ -12,6 +12,7 @@ function History(issues) {
   const [tasks, settasks] = useState([]);
   const [toResolvetasks, setToResolvetasks] = useState([]);
   const [hasChanged, setHasChanged] = useState(true);
+  const [taskChanged, setTaskChanged] = useState(true);
 
   const navigate = useNavigate()
 
@@ -57,7 +58,7 @@ function History(issues) {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [taskChanged]);
 
   useEffect(() => {
     const accessToken = localStorage.getItem('accessToken');
@@ -87,7 +88,7 @@ function History(issues) {
       },
         withCredentials: true });
 
-      window.location.reload();
+        setTaskChanged(!taskChanged);
     } catch (error) {
       e => { navigate("/") }
       console.error('Error completing the task:', error);
