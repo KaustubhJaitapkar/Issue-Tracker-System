@@ -41,10 +41,11 @@ function LoginForm() {
         // console.log("Success ");
         AlertBox(1,"Login Successfull");
         // console.log("AlertBox ");
-        // console.log(res.data)
+        
         // console.log(res.data.refreshToken)
         localStorage.setItem("accessToken", res.data.accessToken);
         localStorage.setItem("refreshToken", res.data.refreshToken);
+        console.log(res.data)
         navigateToAboutPage();
       }else{
         console.log("Error");
