@@ -36,13 +36,12 @@ function LoginForm() {
       const res = await axios.post('https://issue-tracker-system-1t4j.onrender.com/api/v1/users/login',{
         username:formData.userid, password:formData.password
       },{withCredentials:true});
-
       if(res.data.statusCode == 200){
         // console.log("Success ");
         AlertBox(1,"Login Successfull");
         // console.log("AlertBox ");
         console.log(res.data)
-        console.log(res.data.accessToken);
+        console.log(res.data[accessToken]);
         // console.log(res.data.refreshToken)
         localStorage.setItem("accessToken", res.data.accessToken);
         localStorage.setItem("refreshToken", res.data.refreshToken);
