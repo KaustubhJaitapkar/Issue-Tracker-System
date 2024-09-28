@@ -40,8 +40,8 @@ function LoginForm() {
         // console.log("Success ");
         AlertBox(1,"Login Successfull");
         // console.log("AlertBox ");
-        console.log(res.data)
-        console.log(res.data.data.accessToken);
+        // console.log(res.data)
+        // console.log(res.data.data.accessToken);
         // console.log(res.data.refreshToken)
         localStorage.setItem("accessToken", res.data.data.accessToken);
         localStorage.setItem("refreshToken", res.data.data.refreshToken);
