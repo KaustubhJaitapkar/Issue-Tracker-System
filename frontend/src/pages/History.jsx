@@ -60,7 +60,7 @@ function History(issues) {
 
   useEffect(() => {
     const accessToken = localStorage.getItem('accessToken');
-    
+
     axios.get('https://issue-tracker-system-1t4j.onrender.com/api/v1/users/get-issue', { 
       headers: {
         Authorization: `Bearer ${accessToken}`,  
@@ -74,10 +74,17 @@ function History(issues) {
   }, []);
 
   const handleComplete = async (taskId) => {
+    const accessToken = localStorage.getItem('accessToken');
+
     try {
       await axios.post('https://issue-tracker-system-1t4j.onrender.com/api/v1/users/complete-report', {
         issueId: taskId
-      }, { withCredentials: true });
+      }, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,  
+          'Content-Type': 'application/json'
+      },
+        withCredentials: true });
 
       window.location.reload();
     } catch (error) {
@@ -88,10 +95,16 @@ function History(issues) {
 
   // const [acknowledgedTasks, setAcknowledgedTasks] = useState([]);
   const handleAcknowledge = async (taskId) => {
+    const accessToken = localStorage.getItem('accessToken');
+
     try {
       await axios.post('https://issue-tracker-system-1t4j.onrender.com/api/v1/users/acknowledge-time', {
         responseId: taskId
-      }, { withCredentials: true });
+      }, {  
+        headers: {
+        Authorization: `Bearer ${accessToken}`,  
+        'Content-Type': 'application/json'
+    },withCredentials: true });
 
       window.location.reload();
 
