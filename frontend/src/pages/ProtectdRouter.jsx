@@ -20,6 +20,7 @@ function ProtectedRoute({ element, children }) {
             console.log(res.data);
         } catch (error) {
             setIsAuthenticated(false);
+            console.log(error);
         }
     };
 
