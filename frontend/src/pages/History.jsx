@@ -80,7 +80,7 @@ function History(issues) {
       .catch((error) => {
         console.log(error);
       });
-  }, [hasChanged]);
+  }, [hasChanged,taskChanged]);
 
   const handleComplete = async (taskId) => {
     const accessToken = localStorage.getItem('accessToken');
