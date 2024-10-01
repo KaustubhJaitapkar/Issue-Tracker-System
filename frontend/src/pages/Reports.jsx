@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import axios from 'axios';
 import Header from './Header';
@@ -9,7 +9,13 @@ function Reports(issues) {
   const [tasks, settasks] = useState([]);
 
   useEffect(() => {
-    axios.get('https://issue-tracker-system-1t4j.onrender.com/api/v1/users/fetch-report',{withCredentials:true})
+    axios.get('https://issue-tracker-system-1t4j.onrender.com/api/v1/users/fetch-report',
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        withCredentials: true
+      })
       .then((response) => {
         settasks(response.data.data);
       })
