@@ -9,6 +9,8 @@ function Reports(issues) {
   const [tasks, settasks] = useState([]);
 
   useEffect(() => {
+    const accessToken = localStorage.getItem('accessToken');
+    
     axios.get('https://issue-tracker-system-1t4j.onrender.com/api/v1/users/fetch-report',
       {
         headers: {
