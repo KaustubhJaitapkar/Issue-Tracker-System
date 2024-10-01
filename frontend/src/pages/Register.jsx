@@ -53,55 +53,70 @@ function Register() {
 
 
   return (
-    <div className="register-container">
-      <h1>ISSUE TRACKER</h1>
-      <h2>REGISTER</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="name"
-          placeholder="Name"
-          value={formData.name}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          name="userId"
-          placeholder="User ID"
-          value={formData.userId}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          name="phone"
-          placeholder="Phone No."
-          value={formData.phone}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          name="department"
-          placeholder="Department"
-          value={formData.department}
-          onChange={handleChange}
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={formData.password}
-          onChange={handleChange}
-        />
-        <button type="submit">Register</button>
-      </form>
-      <p>Already have an account? <a href="/login">Log in</a></p>
+    <div className="flex items-center justify-center h-screen bg-white">
+      <div className="w-full max-w-xs sm:max-w-sm md:max-w-md p-3 sm:p-4 md:p-6 bg-white rounded-lg shadow-2xl border border-blue-700">
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-center font-serif text-gray-800 mb-2 md:mb-4">UIAMS</h1>
+        <h2 className="text-base sm:text-lg md:text-xl font-bold text-center font-serif text-blue-600 mb-3 md:mb-5">REGISTER</h2>
+        <form onSubmit={handleSubmit} className="space-y-2 sm:space-y-2">
+          <input
+            type="text"
+            name="name"
+            placeholder="Name"
+            value={formData.name}
+            onChange={handleChange}
+            className="w-full px-2 py-1 sm:px-3 sm:py-2 md:px-4 md:py-3 border border-gray-300 rounded focus:outline-none focus:border-blue-500 my-1"
+          />
+          <input
+            type="text"
+            name="userId"
+            placeholder="User ID"
+            value={formData.userId}
+            onChange={handleChange}
+            className="w-full px-2 py-1 sm:px-3 sm:py-2 md:px-4 md:py-3 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
+          />
+          <input
+            type="text"
+            name="phone"
+            placeholder="Phone No."
+            value={formData.phone}
+            onChange={handleChange}
+            className="w-full px-2 py-1 sm:px-3 sm:py-2 md:px-4 md:py-3 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
+          />
+          <input
+            type="text"
+            name="department"
+            placeholder="Department"
+            value={formData.department}
+            onChange={handleChange}
+            className="w-full px-2 py-1 sm:px-3 sm:py-2 md:px-4 md:py-3 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+            className="w-full px-2 py-1 sm:px-3 sm:py-2 md:px-4 md:py-3 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={formData.password}
+            onChange={handleChange}
+            className="w-full px-2 py-1 sm:px-3 sm:py-2 md:px-4 md:py-3 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
+          />
+          <button
+            type="submit"
+            className="w-full py-2 sm:py-3 md:py-3 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors duration-300 md:text-lg"
+          >
+            Register
+          </button>
+        </form>
+        <p className="text-center mt-3 sm:mt-4 md:mt-5 text-xs sm:text-sm md:text-base">
+          Already have an account? <a href="/login" className="text-blue-600 hover:underline">Log in</a>
+        </p>
+      </div>
     </div>
   );
 };
