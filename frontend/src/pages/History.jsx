@@ -15,38 +15,38 @@ function History(issues) {
 
   const navigate = useNavigate()
 
-  useEffect(() => {
-    const accessToken = localStorage.getItem('accessToken'); 
-    console.log("Before protected route");
-    console.log(accessToken);
+  // useEffect(() => {
+  //   const accessToken = localStorage.getItem('accessToken'); 
+  //   console.log("Before protected route");
+  //   console.log(accessToken);
     
     
-    axios.get('https://issue-tracker-system-1t4j.onrender.com/api/v1/protected-route', {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,  
-    }, 
-      withCredentials: true })
-      .then(response => {
-        console.log('User is authenticated:', response.data);
-      })
-      .catch(error => {
-        if (error.response && error.response.status === 401) {
+  //   axios.get('https://issue-tracker-system-1t4j.onrender.com/api/v1/protected-route', {
+  //     headers: {
+  //       Authorization: `Bearer ${accessToken}`,  
+  //   }, 
+  //     withCredentials: true })
+  //     .then(response => {
+  //       console.log('User is authenticated:', response.data);
+  //     })
+  //     .catch(error => {
+  //       if (error.response && error.response.status === 401) {
           
-          // Redirect to login page if unauthorized
-          // const resetAction = NavigationActions.reset({
-          //   index: 1,
-          //   actions: [
-          //     NavigationActions.navigate({ routeName: 'login' }),
-          //     NavigationActions.navigate({ routeName: '' }),
-          //   ]
-          // });
+  //         // Redirect to login page if unauthorized
+  //         // const resetAction = NavigationActions.reset({
+  //         //   index: 1,
+  //         //   actions: [
+  //         //     NavigationActions.navigate({ routeName: 'login' }),
+  //         //     NavigationActions.navigate({ routeName: '' }),
+  //         //   ]
+  //         // });
 
-          // this.props.navigation.dispatch(resetAction);
-        }
-        console.log("after protected route");
+  //         // this.props.navigation.dispatch(resetAction);
+  //       }
+  //       console.log("after protected route");
 
-      });
-  }, [navigate]);
+  //     });
+  // }, [navigate]);
 
   useEffect(() => {
     const accessToken = localStorage.getItem('accessToken'); 
