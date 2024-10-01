@@ -26,6 +26,8 @@ const giveTime = () => {
 const createIssue = asyncHandler(async (req,res)=>{
     const {issue,description,address,requireDepartment} = req.body
 
+    const acknowledge_at = "";
+
     if (
         [issue,address,requireDepartment].some((field) => field?.trim() === "")
     ) {
