@@ -29,15 +29,15 @@ function History(issues) {
       .catch(error => {
         if (error.response && error.response.status === 401) {
           // Redirect to login page if unauthorized
-          const resetAction = NavigationActions.reset({
-            index: 1,
-            actions: [
-              NavigationActions.navigate({ routeName: 'login' }),
-              NavigationActions.navigate({ routeName: '' }),
-            ]
-          });
+          // const resetAction = NavigationActions.reset({
+          //   index: 1,
+          //   actions: [
+          //     NavigationActions.navigate({ routeName: 'login' }),
+          //     NavigationActions.navigate({ routeName: '' }),
+          //   ]
+          // });
 
-          this.props.navigation.dispatch(resetAction);
+          // this.props.navigation.dispatch(resetAction);
         }
       });
   }, [navigate]);
@@ -104,7 +104,6 @@ function History(issues) {
       }, {  
         headers: {
         Authorization: `Bearer ${accessToken}`,  
-        'Content-Type': 'application/json'
     },withCredentials: true });
 
       // window.location.reload();
