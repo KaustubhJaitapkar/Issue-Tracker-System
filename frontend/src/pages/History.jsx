@@ -18,6 +18,8 @@ function History(issues) {
   useEffect(() => {
     const accessToken = localStorage.getItem('accessToken'); 
     console.log("Before protected route");
+    console.log(accessToken);
+    
     
     axios.get('https://issue-tracker-system-1t4j.onrender.com/api/v1/protected-route', {
       headers: {
