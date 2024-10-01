@@ -166,9 +166,9 @@ function History(issues) {
                       <li key={task._id} className="bg-gray-100 p-4 rounded-lg shadow max-sm:p-2">
                         <div className="flex justify-between items-center max-sm:flex-col">
                           <div className="text-left max-sm:mb-2">
-                            <h4 className="font-semibold text-lg max-sm:text-base">Problem: {task.issue}</h4>
-                            <p className="text-gray-600 max-sm:text-sm">Description: {task.description}</p>
-                            <p className="text-gray-600 max-sm:text-sm">Address: {task.address}</p>
+                            <h4 className="font-semibold text-lg max-sm:text-base text-left">Problem: {task.issue}</h4>
+                            <p className="text-gray-600 max-sm:text-sm text-left">Description: {task.description}</p>
+                            <p className="text-gray-600 max-sm:text-sm text-left">Address: {task.address}</p>
                           </div>
                           {(task.acknowledge_at == "") && (
                               <button
@@ -200,8 +200,8 @@ function History(issues) {
                       <li key={task._id} className="bg-gray-100 p-4 rounded-lg shadow max-sm:p-2">
                         <div className="flex justify-between items-center max-sm:flex-col">
                           <div className="max-sm:mb-2">
-                            <h4 className="font-semibold text-lg max-sm:text-base">Task: {task.issue}</h4>
-                            <p className="text-gray-600 max-sm:text-sm">Description: {task.description}</p>
+                            <h4 className="font-semibold text-lg max-sm:text-base text-left">Task: {task.issue}</h4>
+                            <p className="text-gray-600 max-sm:text-sm text-left">Description: {task.description}</p>
                           </div>
                           <button
                             onClick={() => handleComplete(task._id)}
