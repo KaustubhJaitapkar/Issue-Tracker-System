@@ -19,8 +19,8 @@ function History(issues) {
   //   const accessToken = localStorage.getItem('accessToken'); 
   //   console.log("Before protected route");
   //   console.log(accessToken);
-    
-    
+
+
   //   axios.get('https://issue-tracker-system-1t4j.onrender.com/api/v1/protected-route', {
   //     headers: {
   //       Authorization: `Bearer ${accessToken}`,  
@@ -31,7 +31,7 @@ function History(issues) {
   //     })
   //     .catch(error => {
   //       if (error.response && error.response.status === 401) {
-          
+
   //         // Redirect to login page if unauthorized
   //         // const resetAction = NavigationActions.reset({
   //         //   index: 1,
@@ -49,13 +49,14 @@ function History(issues) {
   // }, [navigate]);
 
   useEffect(() => {
-    const accessToken = localStorage.getItem('accessToken'); 
+    const accessToken = localStorage.getItem('accessToken');
 
-    axios.get('https://issue-tracker-system-1t4j.onrender.com/api/v1/users/get-issue-for-user', { 
+    axios.get('https://issue-tracker-system-1t4j.onrender.com/api/v1/users/get-issue-for-user', {
       headers: {
-        Authorization: `Bearer ${accessToken}`,  
-    }, 
-      withCredentials: true })
+        Authorization: `Bearer ${accessToken}`,
+      },
+      withCredentials: true
+    })
       .then((response) => {
         settasks(response.data.data);
         console.log(response.data.data);
@@ -68,10 +69,11 @@ function History(issues) {
   useEffect(() => {
     const accessToken = localStorage.getItem('accessToken');
 
-    axios.get('https://issue-tracker-system-1t4j.onrender.com/api/v1/users/get-issue', { 
+    axios.get('https://issue-tracker-system-1t4j.onrender.com/api/v1/users/get-issue', {
       headers: {
-        Authorization: `Bearer ${accessToken}`,  
-    }, withCredentials: true })
+        Authorization: `Bearer ${accessToken}`,
+      }, withCredentials: true
+    })
       .then((response) => {
         setToResolvetasks(response.data.data);
       })
@@ -88,12 +90,13 @@ function History(issues) {
         issueId: taskId
       }, {
         headers: {
-          Authorization: `Bearer ${accessToken}`,  
+          Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json'
-      },
-        withCredentials: true });
+        },
+        withCredentials: true
+      });
 
-        setTaskChanged(!taskChanged);
+      setTaskChanged(!taskChanged);
     } catch (error) {
       e => { navigate("/") }
       console.error('Error completing the task:', error);
@@ -107,10 +110,11 @@ function History(issues) {
     try {
       await axios.post('https://issue-tracker-system-1t4j.onrender.com/api/v1/users/acknowledge-time', {
         responseId: taskId
-      }, {  
+      }, {
         headers: {
-        Authorization: `Bearer ${accessToken}`,  
-    },withCredentials: true });
+          Authorization: `Bearer ${accessToken}`,
+        }, withCredentials: true
+      });
 
       // window.location.reload();
       setHasChanged(!hasChanged);
@@ -144,79 +148,79 @@ function History(issues) {
 
         <Header />
         <main className="p-6 max-sm:p-2">
-        <section className="text-center mb-10 max-sm:mb-6">
-          <h2 className="text-3xl font-semibold text-gray-800 max-sm:text-2xl">History</h2>
-        </section>
+          <section className="text-center mb-10 max-sm:mb-6">
+            <h2 className="text-3xl font-semibold text-gray-800 max-sm:text-2xl">History</h2>
+          </section>
 
-        <div className="flex flex-col lg:flex-row lg:space-x-6 justify-center items-start">
+          <div className="flex flex-col lg:flex-row lg:space-x-6 justify-center items-start">
 
-          {/* Issues to be Resolved */}
-          <div className="lg:w-1/2 w-full bg-white border border-gray-200 rounded-lg shadow-xl p-4 mb-6 lg:mb-0 max-sm:p-2 max-sm:mb-4">
-            <h3 className="text-xl font-semibold bg-indigo-100 text-indigo-700 py-2 px-4 rounded-t-lg max-sm:text-lg max-sm:text-center max-sm:px-2">
-              Issues to Be Resolved
-            </h3>
-            <div className="max-h-[26rem] overflow-y-auto p-4 max-sm:p-2">
-              {toResolvetasks.length > 0 ? (
-                <ul className="space-y-4 max-sm:space-y-2">
-                  {toResolvetasks.map((task) => (
-                    <li key={task._id} className="bg-gray-100 p-4 rounded-lg shadow max-sm:p-2">
-                      <div className="flex justify-between items-center max-sm:flex-col">
-                        <div className="max-sm:mb-2">
-                          <h4 className="font-semibold text-lg max-sm:text-base">Problem: {task.issue}</h4>
-                          <p className="text-gray-600 max-sm:text-sm">Description: {task.description}</p>
-                          <p className="text-gray-600 max-sm:text-sm">Address: {task.address}</p>
+            {/* Issues to be Resolved */}
+            <div className="lg:w-1/2 w-full bg-white border border-gray-200 rounded-lg shadow-xl p-4 mb-6 lg:mb-0 max-sm:p-2 max-sm:mb-4">
+              <h3 className="text-xl font-semibold bg-indigo-100 text-indigo-700 py-2 px-4 rounded-t-lg max-sm:text-lg max-sm:text-center max-sm:px-2">
+                Issues to Be Resolved
+              </h3>
+              <div className="max-h-[26rem] overflow-y-auto p-4 max-sm:p-2">
+                {toResolvetasks.length > 0 ? (
+                  <ul className="space-y-4 max-sm:space-y-2">
+                    {toResolvetasks.map((task) => (
+                      <li key={task._id} className="bg-gray-100 p-4 rounded-lg shadow max-sm:p-2">
+                        <div className="flex justify-between items-center max-sm:flex-col">
+                          <div className="max-sm:mb-2">
+                            <h4 className="font-semibold text-lg max-sm:text-base">Problem: {task.issue}</h4>
+                            <p className="text-gray-600 max-sm:text-sm">Description: {task.description}</p>
+                            <p className="text-gray-600 max-sm:text-sm">Address: {task.address}</p>
+                          </div>
+                          {(task.acknowledge_at == "") && (
+                              <button
+                                onClick={() => handleAcknowledge(task._id)}
+                                className="bg-green-500 text-white text-xs md:text-base px-4 py-2 rounded-lg hover:bg-green-600 max-sm:px-2 max-sm:py-1"
+                              >
+                                Acknowledge
+                              </button>
+                            )}
                         </div>
-                        {!acknowledgedTasks.includes(task._id) && (
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="text-gray-600 max-sm:text-sm">No tasks to resolve.</p>
+                )}
+              </div>
+            </div>
+
+            {/* Issues Raised by Me */}
+            <div className="lg:w-1/2 w-full bg-white border border-gray-200 rounded-lg shadow-xl p-4 max-sm:p-2">
+              <h3 className="text-xl font-semibold bg-indigo-100 text-indigo-700 py-2 px-4 rounded-t-lg max-sm:text-lg max-sm:text-center max-sm:px-2">
+                Issues Raised By Me
+              </h3>
+              <div className="max-h-[28rem] overflow-y-auto p-4 max-sm:p-2">
+                {tasks.length > 0 ? (
+                  <ul className="space-y-4 max-sm:space-y-2">
+                    {tasks.map((task) => (
+                      <li key={task._id} className="bg-gray-100 p-4 rounded-lg shadow max-sm:p-2">
+                        <div className="flex justify-between items-center max-sm:flex-col">
+                          <div className="max-sm:mb-2">
+                            <h4 className="font-semibold text-lg max-sm:text-base">Task: {task.issue}</h4>
+                            <p className="text-gray-600 max-sm:text-sm">Description: {task.description}</p>
+                          </div>
                           <button
-                            onClick={() => handleAcknowledge(task._id)}
-                            className="bg-green-500 text-white text-xs md:text-base px-4 py-2 rounded-lg hover:bg-green-600 max-sm:px-2 max-sm:py-1"
+                            onClick={() => handleComplete(task._id)}
+                            className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 max-sm:px-2 max-sm:py-1"
                           >
-                            Acknowledge
+                            Completed
                           </button>
-                        )}
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <p className="text-gray-600 max-sm:text-sm">No tasks to resolve.</p>
-              )}
-            </div>
-          </div>
-
-          {/* Issues Raised by Me */}
-          <div className="lg:w-1/2 w-full bg-white border border-gray-200 rounded-lg shadow-xl p-4 max-sm:p-2">
-            <h3 className="text-xl font-semibold bg-indigo-100 text-indigo-700 py-2 px-4 rounded-t-lg max-sm:text-lg max-sm:text-center max-sm:px-2">
-              Issues Raised By Me
-            </h3>
-            <div className="max-h-[28rem] overflow-y-auto p-4 max-sm:p-2">
-              {tasks.length > 0 ? (
-                <ul className="space-y-4 max-sm:space-y-2">
-                  {tasks.map((task) => (
-                    <li key={task._id} className="bg-gray-100 p-4 rounded-lg shadow max-sm:p-2">
-                      <div className="flex justify-between items-center max-sm:flex-col">
-                        <div className="max-sm:mb-2">
-                          <h4 className="font-semibold text-lg max-sm:text-base">Task: {task.issue}</h4>
-                          <p className="text-gray-600 max-sm:text-sm">Description: {task.description}</p>
                         </div>
-                        <button
-                          onClick={() => handleComplete(task._id)}
-                          className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 max-sm:px-2 max-sm:py-1"
-                        >
-                          Completed
-                        </button>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <p className="text-gray-600 max-sm:text-sm">No issues raised by you.</p>
-              )}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="text-gray-600 max-sm:text-sm">No issues raised by you.</p>
+                )}
+              </div>
             </div>
           </div>
-        </div>
-      </main>
-        
+        </main>
+
       </div>
     </>
   );
