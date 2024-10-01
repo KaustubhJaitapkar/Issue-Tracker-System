@@ -52,8 +52,11 @@ function IssueForm () {
     <div className="issue-form-container">
       <Header/>
       
-      <div className="form-wrapper">
-        <form onSubmit={handleSubmit} className="issue-form">
+      <div className="flex justify-center mt-12 px-2 sm:px-0">
+        <form
+          onSubmit={handleSubmit}
+          className="w-full max-w-xs sm:max-w-sm bg-white p-4 sm:p-6 shadow-lg border border-indigo-700 rounded-lg"
+        >
           <input
             type="text"
             name="issue"
@@ -61,13 +64,14 @@ function IssueForm () {
             value={formData.issue}
             onChange={handleChange}
             required
+            className="w-full mb-3 sm:mb-4 p-2 sm:p-3 border border-gray-300 rounded-lg text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
           <textarea
             name="description"
             placeholder="Description"
             value={formData.description}
             onChange={handleChange}
-            required
+            className="w-full mb-3 sm:mb-4 p-2 sm:p-3 border border-gray-300 rounded-lg text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
           <input
             type="text"
@@ -76,13 +80,24 @@ function IssueForm () {
             value={formData.address}
             onChange={handleChange}
             required
+            className="w-full mb-3 sm:mb-4 p-2 sm:p-3 border border-gray-300 rounded-lg text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
-          <select value={formData.requireDepartment} onChange={handleChange} name="requireDepartment">
-                <option>Select an Department</option>
-                <option>Software</option>
-                <option>Electrician</option>
-            </select>
-          <button type="submit" onClick={handleSubmit}>Submit</button>
+          <select
+            value={formData.requireDepartment}
+            onChange={handleChange}
+            name="requireDepartment"
+            className="w-full mb-3 sm:mb-4 p-2 sm:p-3 border border-gray-300 rounded-lg text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          >
+            <option>Select a Department</option>
+            <option>Software</option>
+            <option>Electrician</option>
+          </select>
+          <button
+            type="submit"
+            className="w-full py-2 sm:py-3 bg-indigo-600 text-white text-sm sm:text-base rounded-lg hover:bg-indigo-700"
+          >
+            Submit
+          </button>
         </form>
       </div>
       

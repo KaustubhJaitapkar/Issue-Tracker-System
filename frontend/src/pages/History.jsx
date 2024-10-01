@@ -181,7 +181,7 @@ function History(issues) {
 
           {/* Issues Raised by Me */}
           <div className="lg:w-1/2 w-full bg-white border border-gray-200 rounded-lg shadow-xl p-4 max-sm:p-2">
-            <h3 className="text-xl font-semibold bg-indigo-100 text-indigo-700 py-2 px-4 rounded-t-lg max-sm:text-lg max-sm:px-2">
+            <h3 className="text-xl font-semibold bg-indigo-100 text-indigo-700 py-2 px-4 rounded-t-lg max-sm:text-lg max-sm:text-center max-sm:px-2">
               Issues Raised By Me
             </h3>
             <div className="max-h-[28rem] overflow-y-auto p-4 max-sm:p-2">
