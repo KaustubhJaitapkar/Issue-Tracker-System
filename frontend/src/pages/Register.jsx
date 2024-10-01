@@ -15,11 +15,7 @@ function Register() {
   });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const navigate = useNavigate();
@@ -83,9 +79,10 @@ function Register() {
             className="w-full px-2 py-1 sm:px-3 sm:py-2 md:px-4 md:py-3 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
           />
           <select
-            onChange={handleChange}
+            
             name="department"
             value={formData.department}
+            onChange={handleChange}
             className="w-full mb-3 sm:mb-4 p-2 sm:p-3 border border-gray-300 rounded-lg text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-indigo-500"
           >
             <option>Select a Department</option>
