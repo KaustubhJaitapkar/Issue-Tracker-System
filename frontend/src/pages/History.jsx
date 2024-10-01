@@ -95,7 +95,7 @@ function History(issues) {
     }
   };
 
-  // const [acknowledgedTasks, setAcknowledgedTasks] = useState([]);
+
   const handleAcknowledge = async (taskId) => {
     const accessToken = localStorage.getItem('accessToken');
 
