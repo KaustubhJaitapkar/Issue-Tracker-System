@@ -28,11 +28,15 @@ const responseSchema = new Schema(
         acknowledge_at : {
             type: String,
             default:"",
+        },
+        // timestapms removed and added in string format
+        createdAt : {
+            type : String
+        },
+        updatedAt : {
+            type : String
         }
 
-    },
-    {
-        timestamps: true
     }
 )
 

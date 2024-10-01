@@ -32,12 +32,15 @@ const issueSchema = new Schema(
             ref: "User"
         },
         acknowledge_at : {
-            type: String,
-            default:"",
+            type: String
+        },
+        // timestapms removed and added in string format
+        createdAt : {
+            type : String
+        },
+        updatedAt : {
+            type : String
         }
-    },
-    {
-        timestamps: true
     }
 )
 
