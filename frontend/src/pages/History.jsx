@@ -164,22 +164,21 @@ function History(issues) {
                   <ul className="space-y-4 max-sm:space-y-2">
                     {toResolvetasks.map((task) => (
                       <li key={task._id} className="bg-gray-100 p-4 rounded-lg shadow max-sm:p-2">
-                        <div className="flex justify-between items-start max-sm:flex-col">
-                          <div className="text-left flex-grow max-sm:mb-2">
+                        <div className="flex justify-between max-sm:flex-col">
+                          <div className="text-left max-sm:mb-2">
                             <h4 className="font-semibold text-lg max-sm:text-base">Problem: {task.issue}</h4>
                             <p className="text-gray-600 max-sm:text-sm">Description: {task.description}</p>
                             <p className="text-gray-600 max-sm:text-sm">Address: {task.address}</p>
                           </div>
-                          {(task.acknowledge_at === "") && (
-                            <button
-                              onClick={() => handleAcknowledge(task._id)}
-                              className="bg-green-500 text-white text-xs md:text-base px-4 py-2 rounded-lg hover:bg-green-600 max-sm:px-2 max-sm:py-1"
-                            >
-                              Acknowledge
-                            </button>
-                          )}
+                          {(task.acknowledge_at == "") && (
+                              <button
+                                onClick={() => handleAcknowledge(task._id)}
+                                className="bg-green-500 text-white text-xs md:text-base px-4 py-2 rounded-lg hover:bg-green-600 max-sm:px-2 max-sm:py-1"
+                              >
+                                Acknowledge
+                              </button>
+                            )}
                         </div>
-
                       </li>
                     ))}
                   </ul>
