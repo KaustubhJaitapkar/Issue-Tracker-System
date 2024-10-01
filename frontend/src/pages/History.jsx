@@ -164,7 +164,7 @@ function History(issues) {
                   <ul className="space-y-4 max-sm:space-y-2">
                     {toResolvetasks.map((task) => (
                       <li key={task._id} className="bg-gray-100 p-4 rounded-lg shadow max-sm:p-2">
-                        <div className="flex justify-between max-sm:flex-col">
+                        <div className="flex justify-between items-center max-sm:flex-col">
                           <div className="text-left max-sm:mb-2">
                             <h4 className="font-semibold text-lg max-sm:text-base">Problem: {task.issue}</h4>
                             <p className="text-gray-600 max-sm:text-sm">Description: {task.description}</p>
