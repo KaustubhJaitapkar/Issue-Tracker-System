@@ -82,14 +82,16 @@ function Register() {
             onChange={handleChange}
             className="w-full px-2 py-1 sm:px-3 sm:py-2 md:px-4 md:py-3 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
           />
-          <input
-            type="text"
-            name="department"
-            placeholder="Department"
-            value={formData.department}
+          <select
+            value={formData.requireDepartment}
             onChange={handleChange}
-            className="w-full px-2 py-1 sm:px-3 sm:py-2 md:px-4 md:py-3 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
-          />
+            name="requireDepartment"
+            className="w-full mb-3 sm:mb-4 p-2 sm:p-3 border border-gray-300 rounded-lg text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          >
+            <option>Select a Department</option>
+            <option>Software</option>
+            <option>Electrician</option>
+          </select>
           <input
             type="email"
             name="email"
