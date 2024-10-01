@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/LoginForm.css';
 import axios from 'axios';
 import AlertBox from '../components/AlertBox'
 
@@ -11,15 +10,6 @@ function LoginForm() {
   });
 
   const navigate = useNavigate();
-
-  // history.pushState(null, null, location.href);
-    // history.back();
-    // history.forward();
-    // window.history.forward(1);
-    // window.onpopstate = function ()
-    // {
-    //     history.go(1);
-    // };
 
   const navigateToAboutPage = () => {
     navigate('/home');  
@@ -37,15 +27,10 @@ function LoginForm() {
         username:formData.userid, password:formData.password
       },{withCredentials:true});
       if(res.data.statusCode == 200){
-        // console.log("Success ");
         AlertBox(1,"Login Successfull");
-        // console.log("AlertBox ");
-        // console.log(res.data)
-        // console.log(res.data.data.accessToken);
-        // console.log(res.data.refreshToken)
+        
         localStorage.setItem("accessToken", res.data.data.accessToken);
         localStorage.setItem("refreshToken", res.data.data.refreshToken);
-        // console.log(res.data)
         navigateToAboutPage();
       }else{
         console.log("Error");
@@ -61,10 +46,10 @@ function LoginForm() {
 
   return (
     <>
-      <div className="login-form-container">
-        <h1>Issue Tracker</h1>
-        <h2>Login</h2>
-        <form onSubmit={handleSubmit} className="login-form">
+      <div className="w-full max-w-xs max-sm:max-w-[18rem] sm:max-w-[18rem] md:max-w-[20rem] lg:max-w-xs p-5 md:p-6 bg-white border-1 rounded-lg shadow-2xl border border-blue-800 mx-auto my-10 md:my-16 lg:my-24 ">
+        <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-center text-gray-800 mb-2 md:mb-3 font-serif">Issue Tracker</h1>
+        <h2 className="text-base sm:text-lg md:text-xl font-bold text-center text-blue-500 mb-3 md:mb-4 font-serif">Login</h2>
+        <form onSubmit={handleSubmit} className="space-y-2 sm:space-y-3">
           <input
             type="text"
             name="userid"
@@ -72,6 +57,7 @@ function LoginForm() {
             value={formData.userid}
             onChange={handleChange}
             required
+            className="w-full px-3 py-2 sm:px-4 sm:py-3 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
           />
           <input
             type="password"
@@ -80,11 +66,17 @@ function LoginForm() {
             value={formData.password}
             onChange={handleChange}
             required
+            className="w-full px-3 py-2 sm:px-4 sm:py-3 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
           />
-          <button type="submit">Login</button>
+          <button
+            type="submit"
+            className="w-full py-2 sm:py-3 md:py-4 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors duration-300 "
+          >
+            Login
+          </button>
         </form>
-        <br/>
-        <a href='/'>Register</a>
+        <br />
+        <a href="/" className="block text-center text-blue-500 hover:underline">Register</a>
       </div>
       
     </>
