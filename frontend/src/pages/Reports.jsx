@@ -20,38 +20,52 @@ function Reports(issues) {
 
   return (
     <>
-      <div className="reports-h">
-        <Header/>
+      <div className="min-h-screen flex flex-col bg-gray-50">
+        <Header />
 
-        <main>
-          <section className="report-section">
-            <h2>History</h2>
-              <div className="tasks">
-                <div className='current'>
-                  <div className='pt'><h3 id="current">Problem</h3></div>
-                  <div className="pt"><h3 id="current">Description</h3></div>
-                  <div className="pt"><h3 id="current">Address</h3></div>
-                  <div className="pt"><h3 id="current">Completed</h3></div>
-                  <div className="pt"><h3 id="dept">Department</h3></div>
-                  <div className="pt"><h3 id="current">Created Time</h3></div>
-                  <div className="pt"><h3 id="current">Resolved Time</h3></div>
-                </div>
-      
-                <div className='tasks-information'>
-                  {tasks && tasks.length>0 && tasks.map((task,index) => (
-                    <div key={task.id} className='reports-he'>
-                        <div className='h'><p>{task.issue}</p></div>
-                        <div className="td"><p>{task.description}</p></div>
-                        <div className="td"><p>{task.address}</p></div>
-                        <div className="td"><p>{task.complete?"Yes":"No"}</p></div>
-                        <div className="td"><p>{task.requireDepartment}</p></div>
-                        <div className="td"><p>{task.createdAt}</p></div>
-                        <div className="td"><p>{task.updatedAt!=task.createdAt ? task.updatedAt: "-"}</p></div> 
-                    </div>
-                  ))}
-                
-                </div>
+        <main className="px-4 sm:px-6 lg:px-8 py-8">
+          <section className="text-center">
+            <h2 className="text-2xl font-semibold text-indigo-700 mb-6">History</h2>
+            <div className="tasks w-full">
+              {/* Table Headings */}
+              <div className="current grid grid-cols-8 gap-4 bg-indigo-600 text-white p-4 rounded-lg shadow-lg text-sm sm:text-lg ">
+                <h3 className="font-semibold ">Problem</h3>
+                <h3 className="font-semibold">Description</h3>
+                <h3 className="font-semibold">Address</h3>
+                <h3 className="font-semibold">Completed</h3>
+                <h3 className="font-semibold">Department</h3>
+                <h3 className="font-semibold">Acknowledge Time</h3>
+                <h3 className="font-semibold">Created Time</h3>
+                <h3 className="font-semibold">Resolved Time</h3>
               </div>
+
+              {/* Tasks Data */}
+              <div className="tasks-information overflow-y-auto max-h-[430px] bg-white mt-4 rounded-lg shadow-2xl">
+                {tasks && tasks.length > 0 ? (
+                  tasks.map((task, index) => (
+                    <div
+                      key={task.id}
+                      className="reports-he grid grid-cols-8 gap-4 p-3 border-b border-gray-200 text-md sm:text-md hover:bg-indigo-50 transition-colors"
+                    >
+                      <p className="text-gray-700">{task.issue}</p>
+                      <p className="text-gray-700">{task.description ? task.description : 'None'}</p>
+                      <p className="text-gray-700">{task.address}</p>
+                      <p className={task.complete ? 'text-green-600' : 'text-red-500'}>
+                        {task.complete ? 'Yes' : 'No'}
+                      </p>
+                      <p className="text-gray-700">{task.requireDepartment}</p>
+                      <p className="text-gray-500">{task.acknowledge_at}</p>
+                      <p className="text-gray-500">{task.createdAt}</p>
+                      <p className="text-gray-500">
+                        {task.updatedAt !== task.createdAt ? task.updatedAt : '-'}
+                      </p>
+                    </div>
+                  ))
+                ) : (
+                  <p className="text-center p-4 text-gray-500">No tasks available</p>
+                )}
+              </div>
+            </div>
           </section>
         </main>
       </div>
