@@ -17,7 +17,8 @@ function History(issues) {
 
   useEffect(() => {
     const accessToken = localStorage.getItem('accessToken'); 
-
+    console.log("Before protected route");
+    
     axios.get('https://issue-tracker-system-1t4j.onrender.com/api/v1/protected-route', {
       headers: {
         Authorization: `Bearer ${accessToken}`,  
@@ -28,6 +29,7 @@ function History(issues) {
       })
       .catch(error => {
         if (error.response && error.response.status === 401) {
+          
           // Redirect to login page if unauthorized
           // const resetAction = NavigationActions.reset({
           //   index: 1,
@@ -39,6 +41,8 @@ function History(issues) {
 
           // this.props.navigation.dispatch(resetAction);
         }
+        console.log("after protected route");
+
       });
   }, [navigate]);
 
