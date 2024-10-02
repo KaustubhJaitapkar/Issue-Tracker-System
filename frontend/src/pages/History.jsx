@@ -166,7 +166,7 @@ function History(issues) {
                           {(task.acknowledge_at == "") && (
                               <button
                                 onClick={() => handleAcknowledge(task._id)}
-                                className="bg-green-500 text-white text-xs md:text-base px-4 py-2 rounded-lg hover:bg-green-600 max-sm:px-2 max-sm:py-1 "
+                                className="bg-green-500 text-white text-base px-4 py-2 rounded-lg hover:bg-green-600 max-sm:px-2 max-sm:py-1 "
                               >
                                 Acknowledge
                               </button>
