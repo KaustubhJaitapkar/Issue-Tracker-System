@@ -1,15 +1,15 @@
 import Header from "./Header";
-import "../styles/Home.css";
+import Footer from "../components/Footer";
 
 function Home() {
     return (
         <div className="home-body" >
             <Header />
-            <div className="flex flex-col items-center h-screen bg-no-repeat bg-cover bg-[url('')]">
-                <div className="home-div">
-                    <h1 className="text-black text-center text-3xl lg:text-5xl max-sm:text-xl">WELCOME TO OUR WEBSITE</h1>
+            <div className="flex h-screen w-full">
+                <div className="flex-1 bg-hero bg-cover bg-center bg-no-repeat bg-[url('https://www.parikhandassociates.com/wp-content/uploads/2023/05/Ushahkal-Abhinav-Institute-of-Medical-Sciences-22-683x441.jpg')]">
                 </div>
             </div>
+            <Footer/>
         </div>
     );
 }

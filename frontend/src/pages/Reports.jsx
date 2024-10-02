@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import axios from 'axios';
 import Header from './Header';
-import "../styles/Reports.css"
 
 function Reports(issues) {
   const [tasks, settasks] = useState([]);

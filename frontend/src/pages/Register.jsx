@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import '../styles/Register.css'; 
 import axios from 'axios';
 import AlertBox from '../components/AlertBox';
 import { useNavigate } from 'react-router-dom';

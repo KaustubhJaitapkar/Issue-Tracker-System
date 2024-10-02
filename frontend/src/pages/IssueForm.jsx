@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {useEffect} from 'react';
 import axios from 'axios';
-import '../styles/IssueForm.css';
 import Header from './Header';
 
 function IssueForm () {

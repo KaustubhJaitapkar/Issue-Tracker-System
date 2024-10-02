@@ -5,6 +5,7 @@ import axios from 'axios';
 import Header from './Header';
 import Cookies from 'js-cookie';
 import AlertBox from '../components/AlertBox'
+import Footer from "../components/Footer";
 
 function History(issues) {
 
@@ -212,8 +213,9 @@ function History(issues) {
             </div>
           </div>
         </main>
-
+        <Footer/>
       </div>
+      
     </>
   );
 };
