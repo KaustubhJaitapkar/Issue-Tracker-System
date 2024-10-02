@@ -213,7 +213,7 @@ function History(issues) {
             </div>
           </div>
         </main>
-        <Footer/>
+        
       </div>
       
     </>
