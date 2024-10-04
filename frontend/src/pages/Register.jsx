@@ -50,7 +50,7 @@ function Register() {
   return (
     <div className="flex items-center justify-center h-screen bg-white">
       <div className="w-full max-w-xs sm:max-w-sm md:max-w-md p-3 sm:p-4 md:p-6 bg-white rounded-lg shadow-2xl border border-blue-700">
-        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-center font-serif text-gray-800 mb-2 md:mb-4">UIAMS</h1>
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-center font-serif text-orange-500 mb-2 md:mb-4">UIAMS</h1>
         <h2 className="text-base sm:text-lg md:text-xl font-bold text-center font-serif text-blue-600 mb-3 md:mb-5">REGISTER</h2>
         <form onSubmit={handleSubmit} className="space-y-2 sm:space-y-2">
           <input

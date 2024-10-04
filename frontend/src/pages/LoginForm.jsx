@@ -47,7 +47,7 @@ function LoginForm() {
   return (
     <>
       <div className="w-full max-w-xs max-sm:max-w-[18rem] sm:max-w-[18rem] md:max-w-[20rem] lg:max-w-xs p-5 md:p-6 bg-white border-1 rounded-lg shadow-2xl border border-blue-800 mx-auto my-10 md:my-16 lg:my-24 ">
-        <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-center text-gray-800 mb-2 md:mb-3 font-serif">Issue Tracker</h1>
+        <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-center text-orange-500 mb-2 md:mb-3 font-serif">UIAMS</h1>
         <h2 className="text-base sm:text-lg md:text-xl font-bold text-center text-blue-500 mb-3 md:mb-4 font-serif">Login</h2>
         <form onSubmit={handleSubmit} className="space-y-2 sm:space-y-3">
           <input
