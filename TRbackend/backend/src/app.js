@@ -7,7 +7,9 @@ let allowUrls = "*"
 
 app.use(
   cors({
-    origin: "https://issue-tracker-system.vercel.app",
+    origin: ["https://issue-tracker-system.vercel.app",
+      "http://localhost:5173"
+    ],
     methods: ["GET", "POST", "DELETE", "UPDATE", "PUT"],
     credentials: true,
     // allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'device-remember-token', 'Access-Control-Allow-Origin', 'Origin', 'Accept']
