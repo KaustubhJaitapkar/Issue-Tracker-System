@@ -47,7 +47,7 @@ function Header(){
         }
        
           
-        navigate("/login");
+        navigate("/");
       };
     
     return(

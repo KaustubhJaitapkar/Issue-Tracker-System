@@ -75,8 +75,6 @@ function LoginForm() {
             Login
           </button>
         </form>
-        <br />
-        <a href="/" className="block text-center text-blue-500 hover:underline">Register</a>
       </div>
       
     </>
