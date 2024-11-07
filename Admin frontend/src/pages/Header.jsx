@@ -26,6 +26,11 @@ function Header(){
         });
     }, []);
 
+    const handleReport = (e) => {
+      e.preventDefault();
+      window.location.href = '/reports';
+    }
+
     const handleLogOut = async (e) => {
       const accessToken = localStorage.getItem('accessToken');
       
@@ -73,6 +78,11 @@ function Header(){
           <a href='/issue-form' className="bg-white text-black font-bold py-2 px-4 rounded-2xl transition duration-300 hover:bg-gray-100">
             Report a Problem
           </a>
+          {adminId === "Admin" && (
+            <button onClick={handleReport} className="bg-white text-indigo-600 font-bold py-2 px-4 rounded-2xl transition duration-300 hover:bg-gray-100">
+              Reports
+            </button>
+          )}
           <button onClick={handleLogOut} className="bg-white text-indigo-600 font-bold py-2 px-4 rounded-2xl transition duration-300 hover:bg-gray-100">
             Log out
           </button>
@@ -96,6 +106,16 @@ function Header(){
                 <a href="/issue-form" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-blue-600 dark:hover:text-white">
                   Report a Problem
                 </a>
+              </li>
+              <li>
+                {adminId === "Admin" && (
+                  <button
+                    onClick={handleReport}
+                    className="block px-4 py-2  dark:hover:bg-blue-900 dark:hover:text-white"
+                  >
+                    Reports
+                  </button>
+                )}
               </li>
               <li>
                 <button
